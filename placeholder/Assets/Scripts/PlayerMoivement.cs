@@ -43,7 +43,7 @@ public class PlayerMoivement : MonoBehaviour
       }
 
       if(Input.GetAxis("Horizontal") != 0){
-        rb.AddForce(direction * velocity, ForceMode.VelocityChange);
+        rb.AddForce(direction * velocity * Time.deltaTime, ForceMode.VelocityChange);
       }else{
         rb.velocity = new Vector3(rb.velocity.x*0.9f, rb.velocity.y, 0);
       }
