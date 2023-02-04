@@ -125,8 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009ed094dd065b749890fb62d0e31130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_tr_: {fileID: 0}
   shoot_cd_: 2
-  bulletPrefab_: {fileID: 7854594130159223955, guid: 9f9f415b669d3644c9b3b7ab656a9491,
+  bulletPrefab_: {fileID: 5248559530837681793, guid: 60b86cb5504c6ba43bcbd4ba1ff6ec67,
     type: 3}
 --- !u!114 &7008292677008329629
 MonoBehaviour:
