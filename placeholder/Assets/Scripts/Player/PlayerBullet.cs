@@ -27,4 +27,15 @@ public class PlayerBullet : MonoBehaviour
     {
       rb.AddForce(transform.right * bullet_velocity, ForceMode.VelocityChange);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+      if(other.gameObject.GetComponent<PlayerMovement>().IsInmune()){
+        
+      }else{
+        Debug.Log("Hitted");
+        other.gameObject.GetComponent<HealthManager>().RecieveDamage(1);
+        Destroy(gameObject);
+      }
+    }
 }
