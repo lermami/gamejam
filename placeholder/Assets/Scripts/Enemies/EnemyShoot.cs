@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
   private Transform tr_;
+  public Transform player_tr_;
   public float shoot_cd_;
   public GameObject bulletPrefab_;
 
@@ -19,12 +20,15 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if(timer_ > shoot_cd_)
+      if (Vector3.Distance(tr_.position, player_tr_.position) < 15.0f)
       {
-        timer_ = 0;
-        Instantiate(bulletPrefab_, new Vector3(tr_.position.x - 1.0f, tr_.position.y, 0.0f), Quaternion.identity);
-      }
+        if(timer_ > shoot_cd_)
+        {
+          timer_ = 0;
+          Instantiate(bulletPrefab_, new Vector3(tr_.position.x - 1.0f, tr_.position.y, 0.0f), Quaternion.identity);
+        }
 
-      timer_ += Time.deltaTime;
+        timer_ += Time.deltaTime;
+      }
     }
 }
