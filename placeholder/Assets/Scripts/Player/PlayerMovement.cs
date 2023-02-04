@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
   public PlayerShooting player_shoot_;
   protected float long_jump;
   public float long_jump_length;
+  protected bool ground_;
+  protected bool walking_;
+  public AudioSource footsteps_;
 
 
     // Start is called before the first frame update
@@ -42,8 +45,11 @@ public class PlayerMovement : MonoBehaviour
         direction = new Vector3(-1, 0, 0);
       }
 
-      //Jump
-      if(Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump){
+    //Jump
+      ground_ = (Physics.CheckBox(transform.position + new Vector3(0, -1.0f, 0), 
+        new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
+
+      if (Input.GetButtonDown("Jump") && (ground_ || jump_time < ghost_jump_time)  && !already_jump){
         rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high), ForceMode.VelocityChange);
         already_jump = true;
       }
@@ -101,7 +107,21 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene("GameOver");
       }
 
-    }
+      //Footsteps audio
+      if((rb.velocity.x > 0.1f || rb.velocity.x < -0.1f) && ground_)
+      {
+        if (!walking_)
+        {
+          footsteps_.Play();
+        }
+        walking_ = true;
+        }
+      else
+      {
+        footsteps_.Stop();
+        walking_ = false;
+      }
+  }
 
     //Movile platform floor
     void OnCollisionEnter(Collision other){
