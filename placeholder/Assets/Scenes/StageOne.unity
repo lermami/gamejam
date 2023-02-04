@@ -1417,6 +1417,11 @@ PrefabInstance:
       propertyPath: player_tr_
       value: 
       objectReference: {fileID: 319157070}
+    - target: {fileID: 82512012, guid: aa581bd34941262489a43c126847b13f, type: 3}
+      propertyPath: bulletPrefab_
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: cddb92c7a7815f240a55c2881a44b632,
+        type: 3}
     - target: {fileID: 6064885581265642339, guid: aa581bd34941262489a43c126847b13f,
         type: 3}
       propertyPath: m_Name
