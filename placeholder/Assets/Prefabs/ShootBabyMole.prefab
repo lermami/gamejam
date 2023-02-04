@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_tr_: {fileID: 0}
   shoot_cd_: 2
-  bulletPrefab_: {fileID: 5248559530837681793, guid: 60b86cb5504c6ba43bcbd4ba1ff6ec67,
+  bulletPrefab_: {fileID: 7854594130159223955, guid: 9f9f415b669d3644c9b3b7ab656a9491,
     type: 3}
 --- !u!114 &6539718574924065568
 MonoBehaviour:
@@ -156,9 +156,3 @@ MonoBehaviour:
   n_lifes: 4
   isDead: 0
   inmune_timer_: 0
-  mole0: {fileID: 0}
-  mole1: {fileID: 0}
-  mole2: {fileID: 0}
-  mole3: {fileID: 0}
-  mole4: {fileID: 0}
-  mole5: {fileID: 0}
