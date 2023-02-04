@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
   protected float jump_time;
   protected float shielded_counter;
   public PlayerShooting player_shoot_;
+  protected float long_jump;
+  public float long_jump_length;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
       rb = GetComponent<Rigidbody>();
       already_jump = false;
       shielded_counter = 0;
+      long_jump = long_jump_length;
     }
 
     // Update is called once per frame
@@ -44,8 +48,15 @@ public class PlayerMovement : MonoBehaviour
         already_jump = true;
       }
 
+      if(Input.GetButton("Jump") && long_jump > 0){
+        rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high/1000), ForceMode.VelocityChange);
+        long_jump -= Time.deltaTime;
+      }
+
+
       if(Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0){
         already_jump = false;
+        long_jump = long_jump_length;
       }
 
       //Break

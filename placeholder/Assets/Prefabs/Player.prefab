@@ -258,10 +258,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3985024216802536892}
   acceleration: 10
-  jump_high: 9
+  jump_high: 4
   max_velocity: 13
   ghost_jump_time: 0.2
   player_shoot_: {fileID: 3055519833943490163}
+  long_jump_length: 0.2
 --- !u!136 &598647179
 CapsuleCollider:
   m_ObjectHideFlags: 0
