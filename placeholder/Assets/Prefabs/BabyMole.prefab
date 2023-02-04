@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6849532107462040099}
   - component: {fileID: 6849532107462040098}
   - component: {fileID: 6849532107462040101}
-  - component: {fileID: 6849532107462040097}
   - component: {fileID: 6849532107462040126}
+  - component: {fileID: 2231494080134757834}
   m_Layer: 0
   m_Name: BabyMole
   m_TagString: Untagged
@@ -95,21 +95,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6849532107462040097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6849532107462040100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1667c0150e6ed44795954fcec3b1ec1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_: 5
-  startPos: {fileID: 0}
-  finalPos: {fileID: 0}
 --- !u!54 &6849532107462040126
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,3 +111,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2231494080134757834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6849532107462040100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d844518c702801946961b769d23e3289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_: 0
+  min_: 0
+  speed_: 0
+  dir_: {x: 0, y: 0, z: 0}

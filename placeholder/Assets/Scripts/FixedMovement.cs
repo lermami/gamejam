@@ -4,39 +4,59 @@ using UnityEngine;
 
 public class FixedMovement : MonoBehaviour
 {
-  private Transform tr_;
-  private Rigidbody rb_;
-  private Vector3 dir_;
-
+  public float max_;
+  public float min_;
   public float speed_;
-  public Transform startPos;
-  public Transform finalPos;
+  public float parent_speed_;
+  public Vector3 dir_;
 
-    // Start is called before the first frame update
-    void Start()
+  // Start is called before the first frame update
+  void Start()
+  {
+    if (transform.parent != null && transform.parent.GetComponent<FixedMovement>() != null)
     {
-        tr_ = GetComponent<Transform>();
-        rb_ = GetComponent<Rigidbody>();
+      FixedMovement mov_;
+      mov_ = transform.parent.GetComponent<FixedMovement>();
+      parent_speed_ = mov_.speed_;
+    }
+    else
+    {
+      parent_speed_ = 0;
+    }
+  }
 
-        dir_ = new Vector3(speed_, 0.0f, 0.0f);
+  // Update is called once per frame
+  void Update()
+  {
+    if (dir_.x != 0)
+    {
+      if (transform.localPosition.x < min_)
+      {
+        dir_ = new Vector3(-dir_.x, 0, 0);
+        transform.localPosition = new Vector3(min_, transform.localPosition.y, 0);
+      }
+
+      if (transform.localPosition.x > max_)
+      {
+        dir_ = new Vector3(-dir_.x, 0, 0);
+        transform.localPosition = new Vector3(max_, transform.localPosition.y, 0);
+      }
+    }
+    else
+    {
+      if (transform.position.y < min_)
+      {
+        dir_ = new Vector3(0, -dir_.y, 0);
+        transform.position = new Vector3(transform.position.x, min_, 0);
+      }
+
+      if (transform.position.y > max_)
+      {
+        dir_ = new Vector3(0, -dir_.y, 0);
+        transform.position = new Vector3(transform.position.x, max_, 0);
+      }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(tr_.position.x < startPos.position.x)
-        {
-          dir_ = new Vector3(-dir_.x, dir_.y, dir_.z);
-          tr_.position = new Vector3(startPos.position.x, tr_.position.y, tr_.position.z);
-        }
-
-        if (tr_.position.x > finalPos.position.x)
-        {
-          dir_ = new Vector3(-dir_.x, dir_.y, dir_.z);
-          tr_.position = new Vector3(finalPos.position.x, tr_.position.y, tr_.position.z);
-        }
-
-        tr_.position += dir_ * Time.deltaTime;
-    }
-
+    transform.position += dir_ * (speed_ + parent_speed_) * Time.deltaTime;
+  }
 }
