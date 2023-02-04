@@ -40,7 +40,6 @@ public class TrapController : MonoBehaviour
     if(!finished && Physics.CheckBox(new Vector3(transform.position.x, transform.position.y + 1.1f, 0.0f), check_box_size))
     {
       triggered = true;
-      Debug.Log("Triggered");
     }
   }
 
