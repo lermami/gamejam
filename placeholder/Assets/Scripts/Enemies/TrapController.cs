@@ -37,7 +37,7 @@ public class TrapController : MonoBehaviour
 
   void FixedUpdate()
   {
-    if(!finished && Physics.CheckBox(new Vector3(transform.position.x, transform.position.y + 1.1f, 0.0f), check_box_size))
+    if(!finished && Physics.CheckBox(new Vector3(transform.position.x, transform.position.y + 1.1f, 0.0f), check_box_size, transform.rotation))
     {
       triggered = true;
     }
