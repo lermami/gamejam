@@ -262,7 +262,8 @@ MonoBehaviour:
   max_velocity: 13
   ghost_jump_time: 0.2
   player_shoot_: {fileID: 3055519833943490163}
-  long_jump_length: 0.13
+  long_jump_max: 0.3
+  long_jump_min: 0.8
 --- !u!136 &598647179
 CapsuleCollider:
   m_ObjectHideFlags: 0

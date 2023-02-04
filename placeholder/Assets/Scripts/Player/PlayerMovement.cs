@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
   protected float shielded_counter;
   public PlayerShooting player_shoot_;
   protected float long_jump;
-  public float long_jump_length;
+  public float long_jump_max;
+  public float long_jump_min;
   protected bool ground_;
   protected bool walking_;
   public AudioSource footsteps_;
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
       rb = GetComponent<Rigidbody>();
       already_jump = false;
       shielded_counter = 0;
-      long_jump = long_jump_length;
+      long_jump = long_jump_max;
     }
 
     // Update is called once per frame
@@ -46,24 +47,26 @@ public class PlayerMovement : MonoBehaviour
       }
 
     //Jump
-      ground_ = (Physics.CheckBox(transform.position + new Vector3(0, -1.0f, 0), 
-        new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
+      ground_ = (Physics.CheckBox(transform.position + new Vector3(0, -1.0f, 0),
+      new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
 
-      if (Input.GetButtonDown("Jump") && (ground_ || jump_time < ghost_jump_time)  && !already_jump){
+      if(Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump){
         rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high), ForceMode.VelocityChange);
         already_jump = true;
       }
 
-      if(Input.GetButton("Jump") && long_jump > 0){
-        rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high/1000), ForceMode.VelocityChange);
-        long_jump -= Time.deltaTime;
+      if(Input.GetButton("Jump") && already_jump){
+        if(long_jump > long_jump_min && long_jump < long_jump_max){
+          rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high/1000), ForceMode.VelocityChange);
+        }
+        long_jump += Time.deltaTime;
       }
 
 
       if(Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0){
         already_jump = false;
-        long_jump = long_jump_length;
-      }
+        long_jump = 0;
+        }
 
       //Break
       if(Input.GetAxis("Horizontal") != 0){
