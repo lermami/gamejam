@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -83,6 +84,11 @@ public class PlayerMovement : MonoBehaviour
         shielded_counter -= Time.deltaTime;
       }
 
+      //Fallin Deth
+      if(transform.position.y < -30 ){
+        SceneManager.LoadScene("GameOver");
+      }
+
     }
 
     //Movile platform floor
@@ -117,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
       Vector3 force_dir = transform.position - other_pos;
       force_dir = force_dir.normalized;
 
-      if(force_dir.x == 1.0f || force_dir.x == -1.0f) 
+      if(force_dir.x == 1.0f || force_dir.x == -1.0f)
       {
         rb.AddForce(force_dir * 20.0f, ForceMode.VelocityChange);
       }

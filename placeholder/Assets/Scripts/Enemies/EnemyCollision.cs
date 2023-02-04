@@ -14,7 +14,10 @@ public class EnemyCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      //Fallin Deth
+      if(transform.position.y < -30 ){
+        Destroy(gameObject);
+      }
     }
 
     void OnCollisionEnter(Collision other)

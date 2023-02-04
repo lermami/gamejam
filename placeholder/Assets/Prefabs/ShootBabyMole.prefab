@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6064885581265642361}
   - component: {fileID: 82512012}
   - component: {fileID: 7008292677008329629}
+  - component: {fileID: 6539718574924065568}
   m_Layer: 0
   m_Name: ShootBabyMole
   m_TagString: Enemy
@@ -141,3 +142,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n_lifes: 4
   isDead: 0
+  inmune_timer_: 0
+--- !u!114 &6539718574924065568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6064885581265642339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8716bde6e3838b34facd920e67a9e98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
