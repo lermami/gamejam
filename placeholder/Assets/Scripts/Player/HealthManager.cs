@@ -54,7 +54,9 @@ public class HealthManager : MonoBehaviour
           SceneManager.LoadScene("GameOver");
         }
       }
-      inmune_timer_ = 0.5f;
+      if(gameObject.CompareTag("Player")){
+        inmune_timer_ = 0.5f;
+      }
 
     }
 
