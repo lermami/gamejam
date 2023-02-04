@@ -25,7 +25,6 @@ public class HealthManager : MonoBehaviour
       {
         isDead = true;
       }
-      Debug.Log("Daño recibido. Quedan " + n_lifes + "vidas");
     }
 
     public bool bIsDead()

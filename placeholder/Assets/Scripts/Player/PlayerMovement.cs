@@ -111,4 +111,13 @@ public class PlayerMovement : MonoBehaviour
         return false;
       }
     }
+
+    public void FlyAway(Vector3 other_pos)
+    {
+      Vector3 force_dir = transform.position - other_pos;
+      force_dir = force_dir.normalized;
+
+      Debug.Log(force_dir.normalized);
+      rb.AddForce(force_dir, ForceMode.Impulse);
+  }
 }
