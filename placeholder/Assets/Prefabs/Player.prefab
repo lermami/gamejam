@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 865794644}
   - component: {fileID: 865794643}
   - component: {fileID: 7795963967232499168}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8435393623091912795}
   - component: {fileID: 4150066610075434061}
   - component: {fileID: 8570028492916577020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3985024216802536892}
   - component: {fileID: 1188993980}
   - component: {fileID: 598647179}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 3602955187106699558}
   - component: {fileID: 5892044490130029375}
   - component: {fileID: 6325391710335005349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,3 +428,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon_distance: 0.5
+  bulletPrefab_: {fileID: 7854594130159223955, guid: 25e0d44a0974eff4da9eff87f5b3039f,
+    type: 3}
+  cadence: 0.1
