@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
   public bool isDead;
   public float inmune_timer_;
 
+
   private PlayerMovement playerMov_;
   private HudManager hudC_;
     // Start is called before the first frame update
@@ -49,6 +50,11 @@ public class HealthManager : MonoBehaviour
       }
       if (n_lifes <= 0)
       {
+        if(gameObject.CompareTag("Enemy")){
+          GameObject player = GameObject.Find("Player");
+          int random_number = Random.Range(0,6);
+          player.GetComponent<SoundManager>().Sound(random_number);
+        }
         Destroy(gameObject);
         if(gameObject.CompareTag("Player")){
           SceneManager.LoadScene("GameOver");

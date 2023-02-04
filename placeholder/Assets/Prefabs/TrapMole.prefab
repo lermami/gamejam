@@ -139,6 +139,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n_lifes: 4
   isDead: 0
+  inmune_timer_: 0
+  mole0: {fileID: 0}
+  mole1: {fileID: 0}
+  mole2: {fileID: 0}
+  mole3: {fileID: 0}
+  mole4: {fileID: 0}
+  mole5: {fileID: 0}
 --- !u!114 &4868335299436109750
 MonoBehaviour:
   m_ObjectHideFlags: 0
