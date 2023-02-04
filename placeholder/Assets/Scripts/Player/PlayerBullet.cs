@@ -28,14 +28,11 @@ public class PlayerBullet : MonoBehaviour
       rb.AddForce(transform.right * bullet_velocity, ForceMode.VelocityChange);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-      if(other.gameObject.GetComponent<PlayerMovement>().IsInmune()){
-        
-      }else{
-        Debug.Log("Hitted");
-        other.gameObject.GetComponent<HealthManager>().RecieveDamage(1);
+      if(other.gameObject.CompareTag("Enemy")){
         Destroy(gameObject);
+        other.gameObject.GetComponent<HealthManager>().RecieveDamage(1);
       }
     }
 }

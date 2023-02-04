@@ -15,7 +15,7 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void RecieveDamage(int damage)
@@ -23,7 +23,7 @@ public class HealthManager : MonoBehaviour
       n_lifes -= damage;
       if (n_lifes <= 0)
       {
-        isDead = true;
+        Destroy(gameObject);
       }
     }
 

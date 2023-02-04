@@ -6,6 +6,7 @@ TagManager:
   tags:
   - movile_platform
   - Shield_PickUP
+  - Enemy
   layers:
   - Default
   - TransparentFX
