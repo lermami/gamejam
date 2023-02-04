@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
   public float ghost_jump_time;
   protected float jump_time;
   protected float shielded_counter;
+  public PlayerShooting player_shoot_;
 
     // Start is called before the first frame update
     void Start()
@@ -101,7 +102,13 @@ public class PlayerMovement : MonoBehaviour
          Destroy(other.gameObject);
          shielded_counter = 10;
       }
-    }
+
+      if (other.gameObject.CompareTag("Ammo_PickUP"))
+      {
+        player_shoot_.AddAmmo(20);
+        Destroy(other.gameObject);
+      }
+  }
 
     void OnCollisionExit(Collision other)
     {

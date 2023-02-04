@@ -29,4 +29,10 @@ public class PlayerShooting : MonoBehaviour
         fire_time -= Time.deltaTime;
       }
     }
+
+  public void AddAmmo(int value)
+  {
+    nBullets += value;
+    hudC_.ChangeAmmo(nBullets);
+  }
 }
