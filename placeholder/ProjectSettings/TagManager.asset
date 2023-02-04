@@ -7,6 +7,8 @@ TagManager:
   - movile_platform
   - Shield_PickUP
   - Enemy
+  - Health_PickUP
+  - Ammo_PickUP
   layers:
   - Default
   - TransparentFX

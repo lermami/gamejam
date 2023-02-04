@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -39,6 +40,9 @@ public class HealthManager : MonoBehaviour
       if (n_lifes <= 0)
       {
         Destroy(gameObject);
+        if(gameObject.CompareTag("Player")){
+          SceneManager.LoadScene("GameOver");
+        }
       }
       inmune_timer_ = 0.5f;
 

@@ -31,8 +31,8 @@ public class PlayerBullet : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
       if(other.gameObject.CompareTag("Enemy")){
-        Destroy(gameObject);
         other.gameObject.GetComponent<HealthManager>().RecieveDamage(1);
       }
+      Destroy(gameObject);
     }
 }
