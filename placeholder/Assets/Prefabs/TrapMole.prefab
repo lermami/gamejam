@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6630718930656550521}
   - component: {fileID: 6630718930656550502}
   - component: {fileID: 1116785195262795293}
+  - component: {fileID: 4868335299436109750}
   m_Layer: 0
   m_Name: TrapMole
   m_TagString: Enemy
@@ -138,3 +139,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n_lifes: 4
   isDead: 0
+--- !u!114 &4868335299436109750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630718930656550499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8716bde6e3838b34facd920e67a9e98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -117,7 +117,13 @@ public class PlayerMovement : MonoBehaviour
       Vector3 force_dir = transform.position - other_pos;
       force_dir = force_dir.normalized;
 
-      Debug.Log(force_dir.normalized);
-      rb.AddForce(force_dir * 0.05f, ForceMode.Impulse);
-  }
+      if(force_dir.x == 1.0f || force_dir.x == -1.0f) 
+      {
+        rb.AddForce(force_dir * 20.0f, ForceMode.VelocityChange);
+      }
+      else
+      {
+        rb.AddForce(force_dir * 10.0f, ForceMode.VelocityChange);
+      }
+    }
 }
