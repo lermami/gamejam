@@ -142,6 +142,7 @@ MonoBehaviour:
   cadence: 0.1
   bulletPrefab_: {fileID: 7854594130159223955, guid: 25e0d44a0974eff4da9eff87f5b3039f,
     type: 3}
+  nBullets: 10
 --- !u!1 &3985024216802536893
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +160,7 @@ GameObject:
   - component: {fileID: 411489032739365838}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n_lifes: 3
   isDead: 0
+  inmune_timer_: 0
 --- !u!1 &6896610454530622446
 GameObject:
   m_ObjectHideFlags: 0
