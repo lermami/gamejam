@@ -108,6 +108,14 @@ public class PlayerMovement : MonoBehaviour
         player_shoot_.AddAmmo(20);
         Destroy(other.gameObject);
       }
+
+      if (other.gameObject.CompareTag("Health_PickUP"))
+      {
+        Destroy(other.gameObject);
+        if(gameObject.GetComponent<HealthManager>().n_lifes < 3){
+          gameObject.GetComponent<HealthManager>().RecieveDamage(-1);
+        }
+      }
   }
 
     void OnCollisionExit(Collision other)
