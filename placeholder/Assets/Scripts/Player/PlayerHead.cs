@@ -10,10 +10,7 @@ public class PlayerHead : MonoBehaviour
   protected Vector3 mouse_pos;
   protected float angle;
   public float weapon_distance;
-  public GameObject bulletPrefab_;
   protected float weapon_side;
-  public float cadence;
-  protected float fire_time;
 
 
     // Update is called once per frame
@@ -36,16 +33,6 @@ public class PlayerHead : MonoBehaviour
       mouse_pos.y = mouse_pos.y - object_pos.y;
       angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
       transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
-
-      if(Input.GetButton("Fire1") && fire_time <0){
-          Instantiate(bulletPrefab_, new Vector3(transform.position.x+weapon_side, transform.position.y, 0.0f), Quaternion.identity);
-          fire_time = cadence;
-      }
-
-      if(fire_time >=  0){
-        fire_time -= Time.deltaTime;
-      }
 
 
     }
