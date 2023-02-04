@@ -64,11 +64,8 @@ public class PlayerMovement : MonoBehaviour
       }
 
 
-      if(Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0){
-        if (!already_jump)
-        {
-          land_sound_.Play();
-        }
+      if(Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0 && already_jump){
+        land_sound_.Play();
         already_jump = false;
         long_jump = 0;
       }
