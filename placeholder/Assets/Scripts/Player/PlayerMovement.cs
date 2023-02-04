@@ -47,9 +47,9 @@ public class PlayerMovement : MonoBehaviour
         direction = new Vector3(-1, 0, 0);
       }
 
-    //Jump
+      //Jump
       ground_ = (Physics.CheckBox(transform.position + new Vector3(0, -1.0f, 0),
-      new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
+        new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
 
       if(Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump){
         rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high), ForceMode.VelocityChange);
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
           footsteps_.Play();
         }
         walking_ = true;
-        }
+      }
       else
       {
         footsteps_.Stop();
