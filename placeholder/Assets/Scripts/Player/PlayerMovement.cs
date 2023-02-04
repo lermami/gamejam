@@ -23,10 +23,12 @@ public class PlayerMovement : MonoBehaviour
   protected bool walking_;
   public AudioSource footsteps_;
   public AudioSource land_sound_;
+  public SpriteRenderer Sprite;
+  private bool flipped;
 
 
-    // Start is called before the first frame update
-    void Start()
+  // Start is called before the first frame update
+  void Start()
     {
       rb = GetComponent<Rigidbody>();
       already_jump = false;
@@ -41,10 +43,20 @@ public class PlayerMovement : MonoBehaviour
       //Movement
       if(Input.GetAxis("Horizontal") > 0){
         direction = new Vector3(1, 0, 0);
+
+        if (Sprite.flipX)
+        {
+          Sprite.flipX = false;
+        }
       }
 
       if(Input.GetAxis("Horizontal") < 0){
         direction = new Vector3(-1, 0, 0);
+
+        if (!Sprite.flipX)
+        {
+          Sprite.flipX = true;
+        }
       }
 
       //Jump
@@ -126,6 +138,8 @@ public class PlayerMovement : MonoBehaviour
         footsteps_.Stop();
         walking_ = false;
       }
+
+
   }
 
     //Movile platform floor
