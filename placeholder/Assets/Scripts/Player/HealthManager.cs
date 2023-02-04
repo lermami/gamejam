@@ -10,6 +10,7 @@ public class HealthManager : MonoBehaviour
   public float inmune_timer_;
 
   private PlayerMovement playerMov_;
+  private HudManager hudC_;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,11 @@ public class HealthManager : MonoBehaviour
       if(GetComponent<PlayerMovement>() != null)
       {
         playerMov_ = GetComponent<PlayerMovement>();
+      }
+
+      if(gameObject.tag == "Player")
+      {
+        hudC_ = GameObject.Find("HudManager").GetComponent<HudManager>();
       }
     }
 
@@ -36,6 +42,10 @@ public class HealthManager : MonoBehaviour
       if(inmune_timer_ <= 0)
       {
         n_lifes -= damage;
+        if(hudC_ != null)
+        {
+          hudC_.ChangeLifes(n_lifes);
+        }
       }
       if (n_lifes <= 0)
       {

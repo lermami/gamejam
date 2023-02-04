@@ -7,8 +7,16 @@ public class HudManager : MonoBehaviour
 {
   public Image[] lifes = new Image[3];
 
-    public void ChangeLifes(int lifes)
+    public void ChangeLifes(int n_lifes)
     {
-      
-    }
+      for(int i = 0; i < n_lifes; i++)
+      {
+        lifes[i].gameObject.SetActive(true);
+      }
+
+      for(int i = n_lifes; i < 3; i++)
+      {
+        lifes[i].gameObject.SetActive(false);
+      }
+  }
 }
