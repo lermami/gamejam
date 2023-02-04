@@ -9,6 +9,7 @@ public class PlayerHead : MonoBehaviour
   protected Vector3 object_pos;
   protected Vector3 mouse_pos;
   protected float angle;
+  public float weapon_distance;
 
 
     // Update is called once per frame
@@ -16,9 +17,9 @@ public class PlayerHead : MonoBehaviour
     {
 
        if(Input.mousePosition.x < Screen.width/2){
-         transform.position = new Vector3(gameObject.transform.parent.position.x-0.5f, transform.position.y, transform.position.z);
+         transform.position = new Vector3(gameObject.transform.parent.position.x-weapon_distance, transform.position.y, transform.position.z);
        }else{
-         transform.position = new Vector3(gameObject.transform.parent.position.x+0.5f, transform.position.y, transform.position.z);
+         transform.position = new Vector3(gameObject.transform.parent.position.x+weapon_distance, transform.position.y, transform.position.z);
        }
 
 
