@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
   protected bool ground_;
   protected bool walking_;
   public AudioSource footsteps_;
+  public AudioSource land_sound_;
 
 
     // Start is called before the first frame update
@@ -64,9 +65,13 @@ public class PlayerMovement : MonoBehaviour
 
 
       if(Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0){
+        if (!already_jump)
+        {
+          land_sound_.Play();
+        }
         already_jump = false;
         long_jump = 0;
-        }
+      }
 
       //Break
       if(Input.GetAxis("Horizontal") != 0){
