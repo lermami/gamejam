@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HudManager : MonoBehaviour
 {
   public Image[] lifes = new Image[3];
+  public Text ammo;
 
     public void ChangeLifes(int n_lifes)
     {
@@ -18,5 +19,11 @@ public class HudManager : MonoBehaviour
       {
         lifes[i].gameObject.SetActive(false);
       }
-  }
+    }
+
+    public void ChangeAmmo(int nBullets)
+    {
+      ammo.text = nBullets.ToString();
+    }
+
 }
