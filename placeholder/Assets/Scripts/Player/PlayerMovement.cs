@@ -13,12 +13,14 @@ public class PlayerMovement : MonoBehaviour
   protected bool already_jump;
   public float ghost_jump_time;
   protected float jump_time;
+  protected float shielded_counter;
 
     // Start is called before the first frame update
     void Start()
     {
       rb = GetComponent<Rigidbody>();
       already_jump = false;
+      shielded_counter = 0;
     }
 
     // Update is called once per frame
@@ -76,6 +78,11 @@ public class PlayerMovement : MonoBehaviour
         jump_time = 0;
       }
 
+      //Inmunity
+      if(shielded_counter > 0){
+        shielded_counter -= Time.deltaTime;
+      }
+
     }
 
     //Movile platform floor
@@ -83,12 +90,25 @@ public class PlayerMovement : MonoBehaviour
       if (other.gameObject.CompareTag("movile_platform") && Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation)){
          transform.parent = other.transform;
       }
+
+      if (other.gameObject.CompareTag("Shield_PickUP")){
+         Destroy(other.gameObject);
+         shielded_counter = 10;
+      }
     }
 
     void OnCollisionExit(Collision other)
     {
       if (other.gameObject.CompareTag("movile_platform")){
          transform.parent = null;
+      }
+    }
+
+    public bool IsInmune(){
+      if(shielded_counter > 0){
+        return true;
+      }else{
+        return false;
       }
     }
 }
