@@ -256,14 +256,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c33d26c738cee4d8ef3e9ef5c02306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 3985024216802536892}
+  rb: {fileID: 0}
   acceleration: 10
-  jump_high: 4
+  jump_high: 6
   max_velocity: 13
   ghost_jump_time: 0.2
-  player_shoot_: {fileID: 3055519833943490163}
-  long_jump_max: 0.3
-  long_jump_min: 0.8
+  player_shoot_: {fileID: 0}
+  long_jump_max: 0.4
+  long_jump_min: 0.1
+  footsteps_: {fileID: 0}
+  land_sound_: {fileID: 0}
 --- !u!136 &598647179
 CapsuleCollider:
   m_ObjectHideFlags: 0
