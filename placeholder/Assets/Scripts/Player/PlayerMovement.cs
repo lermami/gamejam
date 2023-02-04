@@ -118,6 +118,6 @@ public class PlayerMovement : MonoBehaviour
       force_dir = force_dir.normalized;
 
       Debug.Log(force_dir.normalized);
-      rb.AddForce(force_dir, ForceMode.Impulse);
+      rb.AddForce(force_dir * 0.05f, ForceMode.Impulse);
   }
 }
