@@ -15,7 +15,7 @@ public class EnemyCollision : MonoBehaviour
     void Update()
     {
       //Fallin Deth
-      if(transform.position.y < -30 ){
+      if(transform.position.y < -20 ){
         Destroy(gameObject);
       }
     }

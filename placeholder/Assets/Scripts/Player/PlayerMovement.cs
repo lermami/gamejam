@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
       }
 
       //Fallin Deth
-      if(transform.position.y < -30 ){
+      if(transform.position.y < -15 ){
         SceneManager.LoadScene("GameOver");
       }
 
