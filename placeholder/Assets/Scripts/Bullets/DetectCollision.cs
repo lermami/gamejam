@@ -19,10 +19,8 @@ public class DetectCollision : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
       if(other.gameObject.GetComponent<PlayerMovement>().IsInmune()){
-        Debug.Log("Protected");
         Destroy(gameObject);
       }else{
-        Debug.Log("Hitted");
         other.gameObject.GetComponent<HealthManager>().RecieveDamage(1);
         Destroy(gameObject);
       }
