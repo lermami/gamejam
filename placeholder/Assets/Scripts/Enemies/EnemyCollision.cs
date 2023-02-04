@@ -38,6 +38,7 @@ public class EnemyCollision : MonoBehaviour
 
           rb_.useGravity = true;
           FlyAway(other.transform.position);
+          transform.position = new Vector3(transform.position.x, transform.position.y, -1.5f);
           Destroy(gameObject.GetComponent<FixedMovement>());
           Destroy(gameObject.GetComponent<BoxCollider>());
         }
