@@ -1277,7 +1277,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Attack On Moles
+  m_Text: ATTACK ON MOLES
 --- !u!222 &1762008141
 CanvasRenderer:
   m_ObjectHideFlags: 0

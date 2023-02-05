@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HudManager : MonoBehaviour
 {
   public Image[] lifes = new Image[3];
+  public Image shield;
   public Text ammo;
 
     public void ChangeLifes(int n_lifes)
@@ -18,6 +19,14 @@ public class HudManager : MonoBehaviour
       for(int i = n_lifes; i < 3; i++)
       {
         lifes[i].gameObject.SetActive(false);
+      }
+    }
+
+    public void SetShield(bool activated){
+      if(activated){
+        shield.gameObject.SetActive(true);
+      }else{
+        shield.gameObject.SetActive(false);
       }
     }
 

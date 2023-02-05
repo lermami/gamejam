@@ -70,4 +70,8 @@ public class HealthManager : MonoBehaviour
     {
       return isDead;
     }
+
+    public void Inmunity(bool activate){
+        hudC_.SetShield(activate);
+    }
 }

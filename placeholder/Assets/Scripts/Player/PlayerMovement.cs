@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
   // Start is called before the first frame update
   void Start()
     {
+
       rb = GetComponent<Rigidbody>();
       animator_ = GetComponent<Animator>();
       already_jump = false;
@@ -102,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         already_jump = false;
         animator_.SetBool("ground", true);
         long_jump = 0;
-      }
+    }
 
       //Break
       if(Input.GetAxis("Horizontal") != 0){
@@ -139,6 +140,9 @@ public class PlayerMovement : MonoBehaviour
       //Inmunity
       if(shielded_counter > 0){
         shielded_counter -= Time.deltaTime;
+        gameObject.GetComponent<HealthManager>().Inmunity(true);
+      }else{
+        gameObject.GetComponent<HealthManager>().Inmunity(false);
       }
 
       //Fallin Deth
