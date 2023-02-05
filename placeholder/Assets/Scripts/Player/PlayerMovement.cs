@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
       jump_offset = -1.0f;
 
       animator_.SetBool("fly", false);
+      animator_.SetBool("land", false);
   }
 
   // Update is called once per frame
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     //ground_ = (Physics.CheckBox(transform.position + new Vector3(0, -1.0f, 0),
     //new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
 
-    if (Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.8f , 0), new Vector3(0.499f , 0.05f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump && jump_offset < 0){
+      if (Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.8f , 0), new Vector3(0.499f , 0.05f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump && jump_offset < 0){
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high), ForceMode.VelocityChange);
         already_jump = true;
@@ -107,8 +108,9 @@ public class PlayerMovement : MonoBehaviour
         land_sound_.Play();
         already_jump = false;
         animator_.SetBool("fly", false);
+        animator_.SetBool("land", false);
         long_jump = 0;
-    }
+      }
 
       //Break
       if(Input.GetAxis("Horizontal") != 0){
@@ -150,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponent<HealthManager>().Inmunity(false);
       }
 
-      //Fallin Deth
+      //Falling Death
       if(transform.position.y < -15 ){
         SceneManager.LoadScene("GameOver");
       }
