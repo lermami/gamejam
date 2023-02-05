@@ -9,7 +9,7 @@ public class FixedMovement : MonoBehaviour
   public float speed_;
   public float parent_speed_;
   public Vector3 dir_;
-  public SpriteRenderer sprite_;
+  private SpriteRenderer sprite_;
 
   // Start is called before the first frame update
   void Start()
@@ -23,6 +23,11 @@ public class FixedMovement : MonoBehaviour
     else
     {
       parent_speed_ = 0;
+    }
+
+    if(GetComponent<SpriteRenderer>() != null)
+    {
+      sprite_ = GetComponent<SpriteRenderer>();
     }
   }
 
