@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9c230ad74d48f48ac7cfff5d785a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cadence: 0.1
+  cadence: 0.15
   bulletPrefab_: {fileID: 7854594130159223955, guid: 25e0d44a0974eff4da9eff87f5b3039f,
     type: 3}
   nBullets: 30
