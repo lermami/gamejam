@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
   public AudioSource land_sound_;
   public SpriteRenderer Sprite;
   private bool flipped;
+  protected float jump_offset;
 
 
   // Start is called before the first frame update
@@ -33,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
       rb = GetComponent<Rigidbody>();
       already_jump = false;
       shielded_counter = 0;
-      long_jump = long_jump_max;
+      long_jump = 0;
+      jump_offset = -1.0f;
     }
 
     // Update is called once per frame
@@ -63,20 +65,30 @@ public class PlayerMovement : MonoBehaviour
       ground_ = (Physics.CheckBox(transform.position + new Vector3(0, -1.0f, 0),
         new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
 
-      if(Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump){
+      if(Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.8f , 0), new Vector3(0.499f , 0.05f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump && jump_offset < 0){
+        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high), ForceMode.VelocityChange);
         already_jump = true;
+        jump_offset = 0.4f;
       }
 
-      if(Input.GetButton("Jump") && already_jump){
-        if(long_jump > long_jump_min && long_jump < long_jump_max){
-          rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high/1000), ForceMode.VelocityChange);
-        }
+      if(jump_offset >= 0){
+        jump_offset -= Time.deltaTime;
+      }
+
+      if(already_jump && long_jump <= long_jump_max){
         long_jump += Time.deltaTime;
       }
 
+      if(Input.GetButton("Jump") && already_jump){
+        Debug.Log("s");
+        if(long_jump > long_jump_min && long_jump < long_jump_max){
+          rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high/30000), ForceMode.VelocityChange);
+          Debug.Log("s");
+        }
+      }
 
-      if(Physics.CheckBox(transform.position + new Vector3(0 , -1.0f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0 && already_jump){
+      if(Physics.CheckBox(transform.position + new Vector3(0 , -1.8f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0 && already_jump){
         land_sound_.Play();
         already_jump = false;
         long_jump = 0;
