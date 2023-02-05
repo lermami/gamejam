@@ -11,6 +11,7 @@ public class PlayerHead : MonoBehaviour
   protected float angle;
   public float weapon_distance;
   protected float weapon_side;
+  public SpriteRenderer sprite_;
 
 
     // Update is called once per frame
@@ -18,12 +19,14 @@ public class PlayerHead : MonoBehaviour
     {
 
        if(Input.mousePosition.x < Screen.width/2){
+         if (!sprite_.flipY) sprite_.flipY = true;
          weapon_side = -weapon_distance;
        }else{
+         if (sprite_.flipY) sprite_.flipY = false;
          weapon_side = weapon_distance;
-       }
+        }
 
-        transform.position = new Vector3(gameObject.transform.parent.position.x+weapon_side, transform.position.y, transform.position.z);
+      transform.position = new Vector3(gameObject.transform.parent.position.x+weapon_side, transform.position.y, transform.position.z);
 
 
       mouse_pos = Input.mousePosition;

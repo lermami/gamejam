@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         already_jump = false;
         animator_.SetBool("ground", true);
         long_jump = 0;
-    }
+      }
 
       //Break
       if(Input.GetAxis("Horizontal") != 0){
