@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
       long_jump = 0;
       jump_offset = -1.0f;
 
-      animator_.SetBool("ground", true);
+      animator_.SetBool("fly", false);
   }
 
   // Update is called once per frame
@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
       //Movement
       if(Input.GetAxis("Horizontal") > 0){
         direction = new Vector3(1, 0, 0);
+      if (!already_jump)
         animator_.SetBool("run", true);
 
       if (Sprite.flipX)
@@ -58,16 +59,19 @@ public class PlayerMovement : MonoBehaviour
         }
       }else
 
-      if(Input.GetAxis("Horizontal") < 0){
+      if (Input.GetAxis("Horizontal") < 0)
+      {
         direction = new Vector3(-1, 0, 0);
-        animator_.SetBool("run", true);
+
+        if (!already_jump)
+          animator_.SetBool("run", true);
 
         if (!Sprite.flipX)
         {
           Sprite.flipX = true;
         }
       }
-      else
+    else
       {
         animator_.SetBool("run", false);
       }
@@ -80,7 +84,8 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high), ForceMode.VelocityChange);
         already_jump = true;
-        animator_.SetBool("ground", false);
+        animator_.SetBool("fly", true);
+        animator_.SetBool("run", false);
         jump_offset = 0.4f;
       }
 
@@ -101,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
       if(Physics.CheckBox(transform.position + new Vector3(0 , -1.8f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0 && already_jump){
         land_sound_.Play();
         already_jump = false;
-        animator_.SetBool("ground", true);
+        animator_.SetBool("fly", false);
         long_jump = 0;
     }
 
