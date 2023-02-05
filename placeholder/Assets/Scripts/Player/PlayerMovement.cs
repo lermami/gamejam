@@ -26,49 +26,60 @@ public class PlayerMovement : MonoBehaviour
   public SpriteRenderer Sprite;
   private bool flipped;
   protected float jump_offset;
+  private Animator animator_;
 
 
   // Start is called before the first frame update
   void Start()
     {
       rb = GetComponent<Rigidbody>();
+      animator_ = GetComponent<Animator>();
       already_jump = false;
       shielded_counter = 0;
       long_jump = 0;
       jump_offset = -1.0f;
-    }
 
-    // Update is called once per frame
-    void Update()
+      animator_.SetBool("ground", true);
+  }
+
+  // Update is called once per frame
+  void Update()
     {
 
       //Movement
       if(Input.GetAxis("Horizontal") > 0){
         direction = new Vector3(1, 0, 0);
+        animator_.SetBool("run", true);
 
-        if (Sprite.flipX)
+      if (Sprite.flipX)
         {
           Sprite.flipX = false;
         }
-      }
+      }else
 
       if(Input.GetAxis("Horizontal") < 0){
         direction = new Vector3(-1, 0, 0);
+        animator_.SetBool("run", true);
 
         if (!Sprite.flipX)
         {
           Sprite.flipX = true;
         }
       }
+      else
+      {
+        animator_.SetBool("run", false);
+      }
 
-      //Jump
-      ground_ = (Physics.CheckBox(transform.position + new Vector3(0, -1.0f, 0),
-        new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
+    //Jump
+    //ground_ = (Physics.CheckBox(transform.position + new Vector3(0, -1.0f, 0),
+    //new Vector3(0.499f, 0.1f, 0.499f), transform.rotation));
 
-      if(Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.8f , 0), new Vector3(0.499f , 0.05f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump && jump_offset < 0){
+    if (Input.GetButtonDown("Jump") && ((Physics.CheckBox(transform.position + new Vector3(0 , -1.8f , 0), new Vector3(0.499f , 0.05f, 0.499f), transform.rotation)) || jump_time < ghost_jump_time)  && !already_jump && jump_offset < 0){
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high), ForceMode.VelocityChange);
         already_jump = true;
+        animator_.SetBool("ground", false);
         jump_offset = 0.4f;
       }
 
@@ -81,18 +92,17 @@ public class PlayerMovement : MonoBehaviour
       }
 
       if(Input.GetButton("Jump") && already_jump){
-        Debug.Log("s");
         if(long_jump > long_jump_min && long_jump < long_jump_max){
           rb.AddForce(transform.up * Mathf.Sqrt (Physics.gravity.y * -2.0f * jump_high/30000), ForceMode.VelocityChange);
-          Debug.Log("s");
         }
       }
 
       if(Physics.CheckBox(transform.position + new Vector3(0 , -1.8f , 0), new Vector3(0.499f , 0.1f, 0.499f), transform.rotation) && rb.velocity.y<0 && already_jump){
         land_sound_.Play();
         already_jump = false;
+        animator_.SetBool("ground", true);
         long_jump = 0;
-      }
+    }
 
       //Break
       if(Input.GetAxis("Horizontal") != 0){
@@ -137,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
       }
 
       //Footsteps audio
-      if((rb.velocity.x > 0.1f || rb.velocity.x < -0.1f) && ground_)
+      if((rb.velocity.x > 0.1f || rb.velocity.x < -0.1f) && !already_jump)
       {
         if (!walking_)
         {
@@ -149,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
       {
         footsteps_.Stop();
         walking_ = false;
-      }
+    }
 
 
   }
