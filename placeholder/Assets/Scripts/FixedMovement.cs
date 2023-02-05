@@ -9,6 +9,7 @@ public class FixedMovement : MonoBehaviour
   public float speed_;
   public float parent_speed_;
   public Vector3 dir_;
+  public SpriteRenderer sprite_;
 
   // Start is called before the first frame update
   void Start()
@@ -34,12 +35,24 @@ public class FixedMovement : MonoBehaviour
       {
         dir_ = new Vector3(-dir_.x, 0, 0);
         transform.localPosition = new Vector3(min_, transform.localPosition.y, 0);
+
+        if (sprite_ != null && gameObject.tag == "Enemy")
+        {
+          if (!sprite_.flipX)
+            sprite_.flipX = true;
+        }
       }
 
       if (transform.localPosition.x > max_)
       {
         dir_ = new Vector3(-dir_.x, 0, 0);
         transform.localPosition = new Vector3(max_, transform.localPosition.y, 0);
+
+        if (sprite_ != null && gameObject.tag == "Enemy")
+        {
+          if (sprite_.flipX)
+            sprite_.flipX = false;
+        }
       }
     }
     else
