@@ -25,8 +25,9 @@ public class EnemyCollision : MonoBehaviour
       if (other.gameObject.tag == "Player")
       {
         PlayerMovement playerMov_ = other.gameObject.GetComponent<PlayerMovement>();
+        HealthManager healthM_ = other.gameObject.GetComponent<HealthManager>();
 
-        if (!playerMov_.IsInmune())
+        if (!healthM_.IsInmune())
         {
           playerMov_.FlyAway(transform.position);
           other.gameObject.GetComponent<HealthManager>().RecieveDamage(1);

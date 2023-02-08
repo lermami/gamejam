@@ -18,7 +18,7 @@ public class DetectCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-      if(other.gameObject.GetComponent<PlayerMovement>().IsInmune()){
+      if(other.gameObject.GetComponent<HealthManager>().IsInmune()){
         Destroy(gameObject);
       }else{
         other.gameObject.GetComponent<HealthManager>().RecieveDamage(1);

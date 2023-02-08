@@ -8,15 +8,17 @@ public class HealthManager : MonoBehaviour
   public int n_lifes;
   public bool isDead;
   public float inmune_timer_;
-
+  public float shielded_counter;
 
   private PlayerMovement playerMov_;
   private HudManager hudC_;
+
     // Start is called before the first frame update
     void Start()
     {
       isDead = false;
       inmune_timer_ = 0;
+      shielded_counter = 0;
 
       if(GetComponent<PlayerMovement>() != null)
       {
@@ -35,6 +37,16 @@ public class HealthManager : MonoBehaviour
       if(inmune_timer_ > 0)
       {
         inmune_timer_ -= Time.deltaTime;
+      }
+
+      //Inmunity
+      if(gameObject.tag == "Player"){
+        if(shielded_counter > 0){
+          shielded_counter -= Time.deltaTime;
+          Inmunity(true);
+        }else{
+          Inmunity(false);
+        }
       }
     }
 
@@ -73,5 +85,14 @@ public class HealthManager : MonoBehaviour
 
     public void Inmunity(bool activate){
         hudC_.SetShield(activate);
+    }
+
+
+    public bool IsInmune(){
+      if(shielded_counter > 0){
+        return true;
+      }else{
+        return false;
+      }
     }
 }
