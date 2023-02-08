@@ -18,7 +18,7 @@ public class PlayerShooting : MonoBehaviour
   // Update is called once per frame
   void Update()
     {
-      if(Input.GetButton("Fire1") && fire_time < 0 && nBullets > 0){
+      if(Input.GetButton("Fire1") && fire_time < 0 && nBullets > 0 && Time.timeScale == 1.0f){
           Instantiate(bulletPrefab_, new Vector3(transform.position.x, transform.position.y, 0.0f), Quaternion.identity);
           fire_time = cadence;
           nBullets--;

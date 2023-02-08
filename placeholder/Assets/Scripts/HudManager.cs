@@ -8,6 +8,10 @@ public class HudManager : MonoBehaviour
   public Image[] lifes = new Image[3];
   public Image shield;
   public Text ammo;
+  public GameObject exit_button;
+  public GameObject return_button;
+  public GameObject resume_button;
+  public GameObject background;
 
     public void ChangeLifes(int n_lifes)
     {
@@ -35,4 +39,10 @@ public class HudManager : MonoBehaviour
       ammo.text = nBullets.ToString();
     }
 
+    public void ActivatePauseMenu(bool option){
+      resume_button.SetActive(option);
+      return_button.SetActive(option);
+      exit_button.SetActive(option);
+      background.SetActive(option);
+    }
 }

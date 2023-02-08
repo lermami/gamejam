@@ -22,6 +22,10 @@ public class MenuController : MonoBehaviour
     SceneManager.LoadScene("Start");
   }
 
+  public void Resume(){
+    Time.timeScale = 1.0f;
+  }
+
   public void Exit(){
     Application.Quit();
   }
