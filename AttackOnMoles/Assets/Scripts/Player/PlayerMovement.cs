@@ -28,12 +28,15 @@ public class PlayerMovement : MonoBehaviour
 
   public AudioManager audioM_;
 
+  private Collider collider_;
+
 
   // Start is called before the first frame update
   void Start()
   {
     rb = GetComponent<Rigidbody>();
     animator_ = GetComponent<Animator>();
+    collider_ = GetComponent<Collider>();
     already_jump = false;
     long_jump = 0;
     jump_offset = -1.0f;
@@ -147,6 +150,19 @@ public class PlayerMovement : MonoBehaviour
       walking_ = false;
     }
 
+    //
+    RaycastHit hit;
+    if(rb.velocity.x > 0 && Physics.BoxCast(collider_.bounds.center, transform.localScale, transform.right, out hit, transform.rotation,1.0f)){
+      if(hit.transform.tag == "Platform"){
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+      }
+    }
+
+    if(rb.velocity.x < 0 && Physics.BoxCast(collider_.bounds.center, transform.localScale, -transform.right, out hit, transform.rotation,1.0f)){
+      if(hit.transform.tag == "Platform"){
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+      }
+    }
   }
 
   public void FlyAway(Vector3 other_pos)
