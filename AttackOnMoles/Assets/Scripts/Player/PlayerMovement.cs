@@ -152,13 +152,13 @@ public class PlayerMovement : MonoBehaviour
 
     //
     RaycastHit hit;
-    if(rb.velocity.x > 0 && Physics.BoxCast(collider_.bounds.center, transform.localScale, transform.right, out hit, transform.rotation,1.0f)){
+    if(rb.velocity.x >= 0 && Physics.BoxCast(collider_.bounds.center, transform.localScale, transform.right, out hit, transform.rotation, 1.0f)){
       if(hit.transform.tag == "Platform"){
         rb.velocity = new Vector3(0, rb.velocity.y, 0);
       }
     }
 
-    if(rb.velocity.x < 0 && Physics.BoxCast(collider_.bounds.center, transform.localScale, -transform.right, out hit, transform.rotation,1.0f)){
+    if(rb.velocity.x <= 0 && Physics.BoxCast(collider_.bounds.center, transform.localScale, -transform.right, out hit, transform.rotation, 1.0f)){
       if(hit.transform.tag == "Platform"){
         rb.velocity = new Vector3(0, rb.velocity.y, 0);
       }
